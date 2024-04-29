@@ -1,0 +1,39 @@
+<!-- <div fxLayout="column" style="margin-bottom: 20px;">
+  <mat-card>
+    <mat-card-content style="background-color: white;">
+      <div fxLayout="row" fxLayoutAlign="end center" style="margin-top: 5px; margin-bottom: 10px;">
+        <button class="btn btn-warning" (click)="openAddSelectorForm()">
+          <i class="fas fa-plus mr-2"></i> Add selector
+        </button>
+      </div>
+      <table mat-table [dataSource]="selectors" class="mat-elevation-z8">
+        <ng-container matColumnDef="name">
+          <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+          <mat-cell *matCellDef="let selector"> {{selector.name}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="description">
+          <mat-header-cell *matHeaderCellDef> Description </mat-header-cell>
+          <mat-cell *matCellDef="let selector"> {{selector.description}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="actions">
+          <mat-header-cell *matHeaderCellDef> Actions </mat-header-cell>
+          <mat-cell *matCellDef="let selector">
+            <div fxLayout="row" fxLayoutGap="5px">
+              <button class="btn btn-primary" (click)="editSelector(selector)">Edit
+                <i class="fas fa-edit"></i>
+              </button>
+              <button class="btn btn-danger" style="margin-left: 7px;" (click)="deleteSelector(selector.id)">Delete
+                <i class="fas fa-trash"></i>
+              </button>
+            </div>
+          </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="['name', 'description', 'actions']"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: ['name', 'description', 'actions'];"></mat-row>
+      </table>
+      <mat-paginator [length]="totalItems" [pageSize]="pageSize" (page)="onPageChange($event.pageIndex)">
+      </mat-paginator>
+    </mat-card-content>
+  </mat-card>
+</div> -->

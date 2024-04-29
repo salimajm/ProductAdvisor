@@ -1,0 +1,81 @@
+<div fxLayout="column" style="margin-bottom: 20px">
+  <mat-card-content style="background-color: rgb(26, 23, 23)">
+    <div
+      fxLayout="row"
+      fxLayoutAlign="end center"
+      style="margin-top: 5px; margin-bottom: 10px"
+    >
+      <button class="btn btn-secondary btn-sm" (click)="openWebsiteDialog()">
+        <i class="fas fa-plus-circle mr-1" style="color: rgb(61, 70, 77)"></i>
+        Add Website
+      </button>
+    </div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>URL</th>
+          <th>Selectors</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngFor="let website of websitesWithSelectors">
+          <tr>
+            <td>{{ website.name }}</td>
+            <td>
+              <a [href]="website.url" target="_blank">{{ website.url }}</a>
+            </td>
+            <td>
+              <div
+                *ngIf="website.selectors && website.selectors.length > 0"
+                class="selector-dropdown"
+              >
+                <select class="form-control">
+                  <ng-container *ngFor="let selector of website.selectors">
+                    <option
+                      *ngFor="let entry of getObjectEntries(selector)"
+                      [ngValue]="entry[1]"
+                    >
+                      {{ entry[0] }}: {{ entry[1] }}
+                    </option>
+                  </ng-container>
+                </select>
+              </div>
+              <span *ngIf="!website.selectors || website.selectors.length === 0"
+                >No selector</span
+              >
+            </td>
+            <td>
+              <button
+                class="btn btn-warning btn-sm mr-2"
+                (click)="editWebsite(website)">
+                <i class="fas fa-edit mr-1"></i>
+              </button>
+
+              <button
+                class="btn btn-danger btn-sm mr-2"
+                (click)="deleteWebsite(website.id)">
+                <i class="fas fa-trash-alt mr-1"></i>
+              </button>
+
+              <button class="btn btn-primary  btn-sm mr-2"  (click)="scrapeWebsite(website.id)">
+                <i class="fas fa-download mr-1"></i> 
+              </button>
+            </td>
+
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
+    
+    <mat-paginator
+  [length]="totalItems"
+  [pageSize]="pageSize"
+  [pageSizeOptions]="[5, 10, 25, 100]"
+  (page)="onPageChange($event)"
+>
+</mat-paginator>
+
+  </mat-card-content>
+</div>
